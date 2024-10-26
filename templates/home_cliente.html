@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente - Gerenciamento de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Produtos - Cliente</h1>
+        <br>
+        <a href="/logout">Logout</a>
+    </header>
+
+    <main>
+        <section class="produtos">
+            <h2>Produtos Disponíveis</h2>
+        </section>
+    </main>
+
+    <header>
+        <a href="/listarprodutos">Listar Produtos</a>
+        <br>
+        <a href="/fazerpedido" class="button">Fazer Pedido</a> <!-- Adicionado link para a página de fazer pedidos -->
+    </header>
+</body>
+</html>

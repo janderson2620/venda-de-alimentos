@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>ADM - Gerenciamento de Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Produtos - ADM</h1>
+        <a href="/logout">Logout</a>
+    </header>
+
+    <main>
+        <section class="acoes">
+            <h2>Gerenciar Produtos</h2>
+            <a href="/cadastrarproduto">Adicionar Produto</a>
+            <br>
+            <a href="/listarprodutos">Listar Produto</a>
+        </section>
+
+        <section class="acoes">
+            <h2>Gerenciar Clientes</h2>
+            <a href="/listarclientes">Listar Clientes E Remover Cliente </a>
+            <br>
+
+        </section>
+    </main>
+
+</body>
+</html>

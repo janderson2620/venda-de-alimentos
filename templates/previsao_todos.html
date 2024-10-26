@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão de Compras</title>
+    <style>
+        .graph-container {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+
+        <a href="/listarprodutos">Voltar para Lista de Produtos</a>
+        <main>
+        <table id="produtos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                     <td>{{ produto.id }}</td>
+                    <td>{{ produto.nome }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    </header>
+<main>
+
+    <div class="graph-container">
+        {{ graph_html|safe }}
+    </div>
+
+</main>
+
+
+</body>
+</html>

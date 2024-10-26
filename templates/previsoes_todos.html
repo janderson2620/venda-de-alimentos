@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Previsões de Todos os Produtos</title>
+</head>
+<body>
+    <h1>Previsões de Compras para Todos os Produtos</h1>
+    {% for produto_id, graph_html in previsoes.items() %}
+        <h2>Produto ID: {{ produto_id }}</h2>
+        {{ graph_html | safe }}
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar e Remover Clientes</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de Clientes</h1>
+        <a href="/logout">Sair</a>
+        <br>
+        <a href="/home_adm">Voltar para o Menu</a>
+
+    </header>
+    <main>
+        <table id="clientes-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in usuarios %}
+                <tr>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>
+                        <<form action="{{ url_for('excluir_cliente', id=cliente.id) }}" method="post">
+                                <button type="submit">Excluir</button>
+                            </form>
+
+
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

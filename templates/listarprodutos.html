@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Produtos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Lista de Produtos</h1>
+        <p>Bem-vindo, {{ meuemail }}</p>
+        <a href="/logout">Sair</a>
+        <br>
+        <br>
+        {% if tipo_usuario == 'ADM' %}
+            <form method="GET" action="{{ url_for('previsao_todos') }}">
+                <button type="submit">Gerar Previsões para Todos os Produtos</button>
+            </form>
+        {% endif %}
+        <br>
+    </header>
+
+    <main>
+        <table id="produtos-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>Validade</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Imagem</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.marca }}</td>
+                    <td>{{ produto.validade.strftime("%d/%m/%Y") }}</td>
+                    <td>R$ {{ produto.preco }}</td>
+                    <td>{{ produto.qtd }}</td>
+                    <td><img src="{{ produto.path }}" width="70" height="110"></td>
+                    <td>
+                        {% if tipo_usuario == 'ADM' %}
+                            <form action="{{ url_for('excluir_produto', id=produto.id) }}" method="post">
+                                <button type="submit">Excluir</button>
+                            </form>
+                            <br>
+                            <form method="POST" action="{{ url_for('previsao', produto_id=produto.id) }}">
+                                <button type="submit">Gerar Previsão</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Loja de Produtos</p>
+    </footer>
+</body>
+</html>

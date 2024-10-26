@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Previsão de Compras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+    <style>
+        .grafico {
+            width: 80%;
+            margin: auto;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Previsão de Compras para Produto {{ id_produto }}</h1>
+        <a href="/listarprodutos">Voltar para Lista de Produtos</a>
+        <main>
+        <table id="produtos-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Qtd</th>
+                    <th>Valor</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.qtd }}</td>
+                    <td>{{ produto.preco }}</td>
+                    <td>{{ produto.id }}</td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    </header>
+
+    <main>
+        <section class="grafico">
+            {{ graph_html|safe }}
+        </section>
+    </main>
+</body>
+</html>

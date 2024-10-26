@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fazer Pedido - Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Fazer Pedido</h1>
+        <br>
+        <a href="/logout">Logout</a>
+    </header>
+
+    <main>
+        <section class="pedido">
+            <form action="/processar_pedido" method="POST">
+                <h2>Selecione os produtos:</h2>
+                {% if msg %}
+                    <div class="error-message">
+                        <p>{{ msg }}</p>
+                    </div>
+                {% endif %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Qtd</th>
+                            <th>imagem</th>
+                            <th>Quantidade desejada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                            <tr>
+                                <td>{{ produto.nome }}</td>
+                                <td>R${{ produto.preco }}</td>
+                                <td>{{ produto.qtd }}</td>
+                                <td><img src="{{ produto.path }}" width="70" height="110"></td>
+
+                                <td>
+                                    <input type="number" name="quantidade_{{ produto.id }}" min="0" max="{{ produto.qtd }}">
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit">Enviar Pedido</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
